@@ -566,7 +566,7 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 18.81
     m_SpeedMode: 1
-    m_MaxSpeed: 1.5
+    m_MaxSpeed: 0.06
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 1
-    m_MaxSpeed: 1.5
+    m_MaxSpeed: 0.06
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -1028,5 +1028,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerIndex: -1
   AutoEnableInputs: 1
-  XYAxis: {fileID: 0}
+  XYAxis: {fileID: -6387120910589821652, guid: 6e1e0bd8ef667154e851ed479cd76f1e, type: 3}
   ZAxis: {fileID: 0}

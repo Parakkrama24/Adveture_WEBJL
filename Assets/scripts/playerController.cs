@@ -21,6 +21,10 @@ public class playerController : MonoBehaviour
     private InputAction _JumpAction;
     private float _rotationSpeed=5f;
 
+    private Animator _animator;
+    int  moveXAnimatoreId;
+    int moveZAnimatoreId;
+
 
     private void Start()
     {
@@ -29,6 +33,12 @@ public class playerController : MonoBehaviour
         _cameraTranform=Camera.main.transform;
        _moveAction =_playerInput.actions["Move"];
         _JumpAction = _playerInput.actions["Jump"];
+
+        _animator= GetComponent<Animator>();//getanimatore component to code
+        moveXAnimatoreId = Animator.StringToHash("MoveX");
+        moveZAnimatoreId = Animator.StringToHash("MoveY");
+
+
     }
 
     void Update()
@@ -44,7 +54,8 @@ public class playerController : MonoBehaviour
         move= move.x*_cameraTranform.right.normalized+move.z*_cameraTranform.forward.normalized;
         move.y = 0f;
         controller.Move(move * Time.deltaTime * playerSpeed);
-
+        _animator.SetFloat(moveXAnimatoreId,move.x);
+        _animator.SetFloat(moveZAnimatoreId, move.z);
 
         // Changes the height position of the player..
         if (_JumpAction.triggered && groundedPlayer)
