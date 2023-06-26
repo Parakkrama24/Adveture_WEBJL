@@ -10,6 +10,10 @@ public class playerController : MonoBehaviour
     private float jumpHeight = 1.0f;
     [SerializeField]
     private float gravityValue = -9.81f;
+    [SerializeField]
+    private float _animationAmoothTime=0.2f;
+    [SerializeField]
+    private float jumpAnimationPlaytransition = 0.15f;
 
     private PlayerInput _playerInput;
     private CharacterController controller;
@@ -22,9 +26,12 @@ public class playerController : MonoBehaviour
     private float _rotationSpeed=5f;
 
     private Animator _animator;
+    int _jumpAnimation;
     int  moveXAnimatoreId;
     int moveZAnimatoreId;
 
+    private Vector2 _curruntAnimationBlendVector;
+    private Vector2 _animationVelocity;
 
     private void Start()
     {
@@ -35,6 +42,7 @@ public class playerController : MonoBehaviour
         _JumpAction = _playerInput.actions["Jump"];
 
         _animator= GetComponent<Animator>();//getanimatore component to code
+        _jumpAnimation = Animator.StringToHash("Jump");
         moveXAnimatoreId = Animator.StringToHash("MoveX");
         moveZAnimatoreId = Animator.StringToHash("MoveY");
 
@@ -43,6 +51,15 @@ public class playerController : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            playerSpeed = 8f;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            playerSpeed = 5f;
+        }
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -50,17 +67,20 @@ public class playerController : MonoBehaviour
         }
 
         Vector2 input = _moveAction.ReadValue<Vector2>();
-        Vector3 move = new Vector3(input.x, 0, input.y);
+        _curruntAnimationBlendVector = Vector2.SmoothDamp(_curruntAnimationBlendVector, input, ref _animationVelocity, _animationAmoothTime);
+        Vector3 move = new Vector3(_curruntAnimationBlendVector.x, 0, _curruntAnimationBlendVector.y);
         move= move.x*_cameraTranform.right.normalized+move.z*_cameraTranform.forward.normalized;
         move.y = 0f;
         controller.Move(move * Time.deltaTime * playerSpeed);
-        _animator.SetFloat(moveXAnimatoreId,move.x);
-        _animator.SetFloat(moveZAnimatoreId, move.z);
+        _animator.SetFloat(moveXAnimatoreId, _curruntAnimationBlendVector.x);
+        _animator.SetFloat(moveZAnimatoreId, _curruntAnimationBlendVector.y);
 
         // Changes the height position of the player..
         if (_JumpAction.triggered && groundedPlayer)
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            //_animator.SetTrigger(_jumpAnimation);
+            _animator.CrossFade(_jumpAnimation, jumpAnimationPlaytransition);
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
