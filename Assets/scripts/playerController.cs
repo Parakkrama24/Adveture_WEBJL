@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,9 +12,13 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private float gravityValue = -9.81f;
     [SerializeField]
+
+    [Header("Aniamtion parameters")]
     private float _animationAmoothTime=0.2f;
     [SerializeField]
     private float jumpAnimationPlaytransition = 0.15f;
+    [SerializeField]
+    private float shootaniamationTransitionTime = 0.05f;
 
     private PlayerInput _playerInput;
     private CharacterController controller;
@@ -27,6 +32,8 @@ public class playerController : MonoBehaviour
 
     private Animator _animator;
     int _jumpAnimation;
+    int _bigJumpAnimation;
+    int _attractAnimation;
     int  moveXAnimatoreId;
     int moveZAnimatoreId;
 
@@ -43,9 +50,15 @@ public class playerController : MonoBehaviour
 
         _animator= GetComponent<Animator>();//getanimatore component to code
         _jumpAnimation = Animator.StringToHash("Jump");
+        _bigJumpAnimation = Animator.StringToHash("BigJump");
+        _attractAnimation = Animator.StringToHash("Attack");
         moveXAnimatoreId = Animator.StringToHash("MoveX");
         moveZAnimatoreId = Animator.StringToHash("MoveY");
 
+        // Lock the cursor within the game window
+        Cursor.lockState = CursorLockMode.Locked;
+        // Hide the cursor
+        Cursor.visible = false;
 
     }
 
@@ -60,6 +73,23 @@ public class playerController : MonoBehaviour
         {
             playerSpeed = 5f;
         }
+
+        if (Input.GetMouseButton(0))
+        {
+            _animator.CrossFade(_attractAnimation, shootaniamationTransitionTime);//play shoot animation
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            _animator.CrossFade(_bigJumpAnimation, jumpAnimationPlaytransition);//play jump animation
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToggleCursorLock();
+        }
+
+
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -80,7 +110,7 @@ public class playerController : MonoBehaviour
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             //_animator.SetTrigger(_jumpAnimation);
-            _animator.CrossFade(_jumpAnimation, jumpAnimationPlaytransition);
+            _animator.CrossFade(_jumpAnimation, jumpAnimationPlaytransition);//play jump animation
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
@@ -91,5 +121,25 @@ public class playerController : MonoBehaviour
         float targetAngle =_cameraTranform.rotation.eulerAngles.y;
         Quaternion target_rotation= Quaternion.Euler(0,targetAngle, 0);
         transform.rotation= Quaternion.Lerp(transform.rotation, target_rotation,_rotationSpeed*Time.deltaTime);
+    }
+
+    private void ToggleCursorLock()
+    {
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            // Unlock the cursor
+            Cursor.lockState = CursorLockMode.None;
+            // Show the cursor
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            // Lock the cursor within the game window
+            Cursor.lockState = CursorLockMode.Locked;
+            // Hide the cursor
+            Cursor.visible = false;
+            Time.timeScale = 1f;
+        }
     }
 }
