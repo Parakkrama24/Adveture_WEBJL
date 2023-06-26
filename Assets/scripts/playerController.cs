@@ -15,15 +15,18 @@ public class playerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
+    private Transform _cameraTranform;
 
     private InputAction _moveAction;
     private InputAction _JumpAction;
+    private float _rotationSpeed=5f;
 
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
         _playerInput= GetComponent<PlayerInput>();
+        _cameraTranform=Camera.main.transform;
        _moveAction =_playerInput.actions["Move"];
         _JumpAction = _playerInput.actions["Jump"];
     }
@@ -38,6 +41,8 @@ public class playerController : MonoBehaviour
 
         Vector2 input = _moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(input.x, 0, input.y);
+        move= move.x*_cameraTranform.right.normalized+move.z*_cameraTranform.forward.normalized;
+        move.y = 0f;
         controller.Move(move * Time.deltaTime * playerSpeed);
 
 
@@ -49,5 +54,11 @@ public class playerController : MonoBehaviour
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        //rotate toward camera direction
+
+        float targetAngle =_cameraTranform.rotation.eulerAngles.y;
+        Quaternion target_rotation= Quaternion.Euler(0,targetAngle, 0);
+        transform.rotation= Quaternion.Lerp(transform.rotation, target_rotation,_rotationSpeed*Time.deltaTime);
     }
 }
