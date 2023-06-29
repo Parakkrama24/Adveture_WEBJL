@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 55776efecb0cd134ea5f418c2f97a705
+timeCreated: 1575469353
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157762
+  packageName: RPG Monster Duo PBR Polyart
+  packageVersion: 1.2
+  assetPath: Assets/RPG Monster Duo PBR Polyart/Prefabs/SlimePBR.prefab
+  uploadId: 341996

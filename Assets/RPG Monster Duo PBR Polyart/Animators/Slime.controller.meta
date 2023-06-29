@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: fb53b4d3a4f06844c90da7297e9082de
+timeCreated: 1573560057
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157762
+  packageName: RPG Monster Duo PBR Polyart
+  packageVersion: 1.2
+  assetPath: Assets/RPG Monster Duo PBR Polyart/Animators/Slime.controller
+  uploadId: 341996

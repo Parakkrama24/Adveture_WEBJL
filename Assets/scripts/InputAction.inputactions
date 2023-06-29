@@ -33,7 +33,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Attract",
+                    "name": "Shoot",
                     "type": "Button",
                     "id": "eb4a52f0-aae8-4245-b79f-9c029fecf5cd",
                     "expectedControlType": "Button",
@@ -45,6 +45,15 @@
                     "name": "BigJump",
                     "type": "Button",
                     "id": "31d095af-9559-46f5-9dde-affa34b53221",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Aim",
+                    "type": "Button",
+                    "id": "04140224-6d65-4c9c-9781-acc7eabea6ff",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -191,7 +200,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attract",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -203,6 +212,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "BigJump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1d3e566c-5289-4373-9bd7-fa43e2f6111c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

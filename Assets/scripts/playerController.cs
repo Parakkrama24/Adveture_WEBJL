@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(CharacterController),typeof(PlayerInput))]
 public class playerController : MonoBehaviour
@@ -11,14 +13,22 @@ public class playerController : MonoBehaviour
     private float jumpHeight = 1.0f;
     [SerializeField]
     private float gravityValue = -9.81f;
+    
+    public GameObject _bulateFreeFab;
     [SerializeField]
+    private Transform _weponTranform;
+    [SerializeField]
+    private Transform _perantTransform;
 
     [Header("Aniamtion parameters")]
+    [SerializeField]
     private float _animationAmoothTime=0.2f;
     [SerializeField]
     private float jumpAnimationPlaytransition = 0.15f;
     [SerializeField]
     private float shootaniamationTransitionTime = 0.05f;
+   
+   
 
     private PlayerInput _playerInput;
     private CharacterController controller;
@@ -28,6 +38,7 @@ public class playerController : MonoBehaviour
 
     private InputAction _moveAction;
     private InputAction _JumpAction;
+    private InputAction _atrackAction;
     private float _rotationSpeed=5f;
 
     private Animator _animator;
@@ -40,15 +51,20 @@ public class playerController : MonoBehaviour
     private Vector2 _curruntAnimationBlendVector;
     private Vector2 _animationVelocity;
 
-    private void Start()
+    //ui
+    public Slider _helthbar;
+
+    private void Awake()
     {
         controller = GetComponent<CharacterController>();
         _playerInput= GetComponent<PlayerInput>();
         _cameraTranform=Camera.main.transform;
        _moveAction =_playerInput.actions["Move"];
         _JumpAction = _playerInput.actions["Jump"];
+        _atrackAction = _playerInput.actions["Shoot"];
 
-        _animator= GetComponent<Animator>();//getanimatore component to code
+
+        _animator = GetComponent<Animator>();//getanimatore component to code
         _jumpAnimation = Animator.StringToHash("Jump");
         _bigJumpAnimation = Animator.StringToHash("BigJump");
         _attractAnimation = Animator.StringToHash("Attack");
@@ -60,7 +76,36 @@ public class playerController : MonoBehaviour
         // Hide the cursor
         Cursor.visible = false;
 
+        //UI
+       // _helthbar.value = 100;
+
     }
+    private void OnEnable()
+    {
+        _atrackAction.performed += _ => shoot();
+    }
+    private void  OnDisable()
+    {
+        _atrackAction.performed -= _ => shoot();
+    }
+
+    private void shoot()
+    {
+        RaycastHit hit;
+        GameObject bullate = Instantiate(_bulateFreeFab, transform.position, Quaternion.identity, _perantTransform);
+        bualteController bualteController = bullate.GetComponent<bualteController>();
+        if (Physics.Raycast(_cameraTranform.position,_cameraTranform.forward,out hit, Mathf.Infinity))
+        {
+            bualteController.target = hit.point;
+            bualteController.hit = true;
+        }
+        else
+        {
+            bualteController.target = _cameraTranform.position + _cameraTranform.forward;
+            bualteController.hit = false;
+        }
+    }
+
 
     void Update()
     {
@@ -140,6 +185,14 @@ public class playerController : MonoBehaviour
             // Hide the cursor
             Cursor.visible = false;
             Time.timeScale = 1f;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("enemyHand"))
+        {
+            _helthbar.value -= 10;
         }
     }
 }
