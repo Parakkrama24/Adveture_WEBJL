@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public class TuirtileEnemyAi : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class TuirtileEnemyAi : MonoBehaviour
     private Vector3 _target;
     private Animator _animator;
     private bool istriged;
+    int _blastAnimation;
     [SerializeField] private Transform[] _wayPointTransform;
     [SerializeField] private float _nearpotion = 0.4f;
     [SerializeField] private Transform _playerTransform;
@@ -19,6 +21,8 @@ public class TuirtileEnemyAi : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         updateDestination();
+
+        _blastAnimation = Animator.StringToHash("turtuleblast");
     }
 
     // Update is called once per frame
@@ -33,16 +37,18 @@ public class TuirtileEnemyAi : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, _playerTransform.position) <= 5)
             {
-               // _animator.SetTrigger("punch");//shoot to player
+                _animator.CrossFade(_blastAnimation, 0.01f);//shoot to player
             }
             Debug.Log(Vector3.Distance(transform.position, _playerTransform.position));
             
             istriged = true;
         }
-        if (!istriged)
+        if (istriged)
         {
             updatePlayerDestination();
         }
+
+
     }
     private void updatePlayerDestination()
     {
