@@ -10,17 +10,24 @@ public class slimeEnemy : MonoBehaviour
     [SerializeField] private Slider _playerSlider;
     [SerializeField] private float reduseValuve;
 
+    //ui
+    [SerializeField] private Slider _enemyhelthBar;
+
     private bool hasexploded;
     private bool istriggerd=false;
     private SphereCollider _spearCollider;
     private NavMeshAgent _agent;
+    private Animator _animator;
+
 
     void Start()
     {
+        _enemyhelthBar.value = 100f;
         _agent = GetComponent<NavMeshAgent>();
         _spearCollider = GetComponent<SphereCollider>();
         _spearCollider.radius = 2.32f;
         _spearCollider.isTrigger = true;
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -39,6 +46,12 @@ public class slimeEnemy : MonoBehaviour
         
             Debug.Log("Trigered");
         }
+        if (_enemyhelthBar.value <= 0)
+        {
+            Invoke("enemydead", 1.5f);
+            _animator.SetBool("EnemyDead", true);
+
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,6 +59,10 @@ public class slimeEnemy : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             exploded();
+        }
+        if (other.gameObject.CompareTag("Bulate"))
+        {
+            _enemyhelthBar.value -= 25f;
         }
     }
     private void exploded()

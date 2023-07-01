@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
-public class CamaraSwitch : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     private NavMeshAgent _agent;
     private int _waypontIndex;
@@ -15,6 +16,9 @@ public class CamaraSwitch : MonoBehaviour
     [SerializeField] private float _nearpotion = 0.4f;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private float _playerToDistance = 5f;
+
+    //UI
+    //[SerializeField]private Slider _enemyhelthBar;
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -26,14 +30,14 @@ public class CamaraSwitch : MonoBehaviour
     void Update()
     {
         if (Vector3.Distance(transform.position, _target) <= _nearpotion && !(Vector3.Distance(transform.position, _playerTransform.position) <= _playerToDistance))
-        { 
-                itarateWayPoitIndex();
-                updateDestination();
+        {
+            itarateWayPoitIndex();
+            updateDestination();
         }
 
-        if(Vector3.Distance(transform.position, _playerTransform.position) <= _playerToDistance)
+        if (Vector3.Distance(transform.position, _playerTransform.position) <= _playerToDistance)
         {
-            if(Vector3.Distance(transform.position, _playerTransform.position) <= 5)
+            if (Vector3.Distance(transform.position, _playerTransform.position) <= 5)
             {
                 _animator.SetTrigger("punch");
             }
@@ -58,6 +62,14 @@ public class CamaraSwitch : MonoBehaviour
         if (_waypontIndex == _wayPointTransform.Length)
         {
             _waypontIndex = 0;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bulate"))
+        {
+            //_enemyhelthBar.value -= 20f;
         }
     }
 }

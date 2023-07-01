@@ -7,6 +7,8 @@ TagManager:
   - enemyHand
   - Ground
   - TutuleEnemy
+  - Bulate
+  - flame
   layers:
   - Default
   - TransparentFX
