@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8a25b6cb45667e2478a4a9729a016ffb
+timeCreated: 1573604611
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 168251
+  packageName: RPG Monster Partners PBR Polyart
+  packageVersion: 1.0
+  assetPath: Assets/RPGMonsterPartnersPBRPolyart/Materials/Stage.mat
+  uploadId: 377196

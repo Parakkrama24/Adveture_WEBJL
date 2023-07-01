@@ -37,7 +37,7 @@ public class CamaraSwitch : MonoBehaviour
             {
                 _animator.SetTrigger("punch");
             }
-            Debug.Log(Vector3.Distance(transform.position, _playerTransform.position));
+            //Debug.Log(Vector3.Distance(transform.position, _playerTransform.position));
             updatePlayerDestination();
         }
     }

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8dd528f4148d7344ea60e001bea3b53d
+timeCreated: 1573567981
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: -1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 168251
+  packageName: RPG Monster Partners PBR Polyart
+  packageVersion: 1.0
+  assetPath: Assets/RPGMonsterPartnersPBRPolyart/Materials/Skybox_Mat.mat
+  uploadId: 377196

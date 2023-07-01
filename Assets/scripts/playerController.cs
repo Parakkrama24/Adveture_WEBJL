@@ -116,7 +116,7 @@ public class playerController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            playerSpeed = 5f;
+            playerSpeed = 3f;
         }
 
         if (Input.GetMouseButton(0))
@@ -191,6 +191,10 @@ public class playerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("enemyHand"))
+        {
+            _helthbar.value -= 10;
+        }
+        else if (other.CompareTag("TutuleEnemy"))
         {
             _helthbar.value -= 10;
         }

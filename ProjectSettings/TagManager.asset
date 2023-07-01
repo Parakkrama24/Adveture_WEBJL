@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemyHand
   - Ground
+  - TutuleEnemy
   layers:
   - Default
   - TransparentFX
