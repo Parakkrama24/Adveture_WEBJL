@@ -846,6 +846,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4882590064214274}
   - component: {fileID: 95528395651247964}
+  - component: {fileID: 1073453625086371511}
   - component: {fileID: 4342098147517863434}
   - component: {fileID: 7536880493327411097}
   - component: {fileID: 330249695805513213}
@@ -897,7 +898,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4342098147517863434
+--- !u!114 &1073453625086371511
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -905,6 +906,25 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837317425425208}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00de5697008dad74ea0875850c08e579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerToDistance: 25
+  _playerTransform: {fileID: 0}
+  _explotionFX: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
+    type: 3}
+  _playerSlider: {fileID: 0}
+  reduseValuve: 10
+  _enemyhelthBar: {fileID: 5118628409529605}
+--- !u!114 &4342098147517863434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837317425425208}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00de5697008dad74ea0875850c08e579, type: 3}
   m_Name: 

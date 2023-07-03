@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class enemyHelth : MonoBehaviour
 {
     [SerializeField] private Slider _enemyhelthBar;
-    [SerializeField] private GameObject _enemy;
+   // [SerializeField] private GameObject _enemy;
      private Animator _animator;
 
     private void Start()

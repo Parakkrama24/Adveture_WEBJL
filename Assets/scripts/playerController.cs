@@ -1,8 +1,10 @@
-using System;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController),typeof(PlayerInput))]
 public class playerController : MonoBehaviour
@@ -53,6 +55,8 @@ public class playerController : MonoBehaviour
 
     //ui
     public Slider _helthbar;
+    //[SerializeField] private TextMeshProUGUI _pointText;
+   // private int _point=0;
 
     private void Awake()
     {
@@ -134,6 +138,13 @@ public class playerController : MonoBehaviour
             ToggleCursorLock();
         }
 
+        if(_helthbar.value<=0)
+        {
+            _animator.SetBool("isDead", true);//dead animation
+            //Time.timeScale = 0f;
+            Invoke("loadMainMenu",1f);
+        }
+
 
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
@@ -168,6 +179,11 @@ public class playerController : MonoBehaviour
         transform.rotation= Quaternion.Lerp(transform.rotation, target_rotation,_rotationSpeed*Time.deltaTime);
     }
 
+    private  void loadMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     private void ToggleCursorLock()
     {
         if (Cursor.lockState == CursorLockMode.Locked)
@@ -197,6 +213,10 @@ public class playerController : MonoBehaviour
         else if (other.CompareTag("TutuleEnemy"))
         {
             _helthbar.value -= 10;
-        }
+        } 
+        else if (other.CompareTag("Chest"))
+        {
+            _helthbar.value += 25;
+        } 
     }
 }

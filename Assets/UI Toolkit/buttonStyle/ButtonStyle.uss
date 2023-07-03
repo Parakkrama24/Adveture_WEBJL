@@ -1,0 +1,41 @@
+.Button_style {
+    width: 189px;
+    border-top-left-radius: 19px;
+    border-bottom-left-radius: 19px;
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+    font-size: 35px;
+    -unity-font-definition: url('project://database/Assets/Fonts/courbd.ttf?fileID=12800000&guid=6570eb21d8c92ba41ac5426f40395878&type=3#courbd');
+    background-color: rgb(62, 69, 197);
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+}
+
+.Button_style:hover {
+    width: 189px;
+    border-top-left-radius: 19px;
+    border-bottom-left-radius: 19px;
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+    font-size: 35px;
+    -unity-font-definition: url('project://database/Assets/Fonts/courbd.ttf?fileID=12800000&guid=6570eb21d8c92ba41ac5426f40395878&type=3#courbd');
+    background-color: rgba(62, 69, 197, 0.69);
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+}
+
+.Button_style:active {
+    width: 189px;
+    border-top-left-radius: 19px;
+    border-bottom-left-radius: 19px;
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+    font-size: 35px;
+    -unity-font-definition: url('project://database/Assets/Fonts/courbd.ttf?fileID=12800000&guid=6570eb21d8c92ba41ac5426f40395878&type=3#courbd');
+    background-color: rgba(62, 69, 197, 0.45);
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+}

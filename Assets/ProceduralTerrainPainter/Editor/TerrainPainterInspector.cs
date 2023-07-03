@@ -12,6 +12,7 @@ using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace sc.terrain.proceduralpainter
 {

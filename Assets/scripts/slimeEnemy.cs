@@ -53,6 +53,10 @@ public class slimeEnemy : MonoBehaviour
 
         }
     }
+    private void enemydead()
+    {
+        Destroy(this.gameObject);
+    }
 
     private void OnTriggerEnter(Collider other)
     {

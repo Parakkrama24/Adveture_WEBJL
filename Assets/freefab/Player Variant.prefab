@@ -80,7 +80,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: bed7a092d53e7c748bd65db98cebf9d6, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: bed7a092d53e7c748bd65db98cebf9d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c5c76098deaa34e8eab712a17274c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
+  playerSpeed: 3
   jumpHeight: 1
   gravityValue: -9.81
   _bulateFreeFab: {fileID: 7925504883629216800, guid: 7876f3a91ba5b1d4e8ce5b4c166b4455,
@@ -196,6 +196,7 @@ MonoBehaviour:
   jumpAnimationPlaytransition: 0.15
   shootaniamationTransitionTime: 0.05
   _helthbar: {fileID: 0}
+  _pointText: {fileID: 0}
 --- !u!114 &2697375287034606072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +251,7 @@ MonoBehaviour:
   jumpAnimationPlaytransition: 0.15
   shootaniamationTransitionTime: 0.05
   _helthbar: {fileID: 0}
+  _pointText: {fileID: 0}
 --- !u!143 &2489223000384097214
 CharacterController:
   m_ObjectHideFlags: 0

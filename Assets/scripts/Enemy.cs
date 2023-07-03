@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     private Animator _animator;
 
 
-    [SerializeField] private Transform[] _wayPointTransform;
+    //[SerializeField] private Transform[] _wayPointTransform;
     [SerializeField] private float _nearpotion = 0.4f;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private float _playerToDistance = 5f;
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     {
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
-        updateDestination();
+        //updateDestination();
     }
 
 
@@ -31,8 +31,8 @@ public class Enemy : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, _target) <= _nearpotion && !(Vector3.Distance(transform.position, _playerTransform.position) <= _playerToDistance))
         {
-            itarateWayPoitIndex();
-            updateDestination();
+           // itarateWayPoitIndex();
+           // updateDestination();
         }
 
         if (Vector3.Distance(transform.position, _playerTransform.position) <= _playerToDistance)
@@ -53,16 +53,16 @@ public class Enemy : MonoBehaviour
 
     private void updateDestination()
     {
-        _target = _wayPointTransform[_waypontIndex].position;
+        //_target = _wayPointTransform[_waypontIndex].position;
         _agent.SetDestination(_target);
     }
     private void itarateWayPoitIndex()
     {
-        _waypontIndex++;
+/*        _waypontIndex++;
         if (_waypontIndex == _wayPointTransform.Length)
         {
             _waypontIndex = 0;
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)
