@@ -3,8 +3,8 @@
     <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: flex-end; align-items: stretch; align-self: center; width: 477px; height: 526px; position: relative; top: auto;">
         <ui:VisualElement style="flex-grow: 1; background-color: rgba(63, 18, 18, 0.9); -unity-background-image-tint-color: rgb(48, 7, 7); border-top-left-radius: 75px; border-bottom-left-radius: 75px; border-top-right-radius: 75px; border-bottom-right-radius: 75px; justify-content: flex-end; align-items: center; align-self: center; width: 486px; position: relative; top: auto; height: 478px; left: auto;">
             <ui:Label tabindex="-1" text="Main Menu" display-tooltip-when-elided="true" style="font-size: 65px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/ariblk.ttf?fileID=12800000&amp;guid=9c25ccf1df37a4b47bbbc67c3051aeb8&amp;type=3#ariblk&apos;); color: rgb(202, 151, 151); position: absolute; top: 45px;" />
-            <ui:Button text="START" display-tooltip-when-elided="true" name="StartBT" class="Button_style" style="position: absolute; top: 200px;" />
-            <ui:Button text="QUIT" display-tooltip-when-elided="true" name="QuitBT" selectable="true" class="Button_style" style="position: absolute; top: 300px;" />
+            <ui:Button text="START" display-tooltip-when-elided="true" name="StartBT" class="Button_style" style="position: absolute; top: 133px; height: 77px;" />
+            <ui:Button text="QUIT" display-tooltip-when-elided="true" name="QuitBT" selectable="true" class="Button_style" style="position: absolute; top: 256px; height: 82px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
