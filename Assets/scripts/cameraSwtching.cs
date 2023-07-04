@@ -11,6 +11,7 @@ public class cameraSwtching : MonoBehaviour
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private int prorityBoostValuve = 10;
     [SerializeField] private Canvas _zoomCanvas;
+    [SerializeField] private CinemachineVirtualCamera _camera;
 
     private InputAction _aimAction;
     private CinemachineVirtualCamera _virtualCamera;
@@ -47,6 +48,10 @@ public class cameraSwtching : MonoBehaviour
     {
         _aimAction.performed -= _ => startAim();
         _aimAction.canceled -= _ => cancalAim();
+    }
+    private void Update()
+    {
+       _camera.transform.rotation=transform.rotation;
     }
 
 }

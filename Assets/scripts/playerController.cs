@@ -9,13 +9,15 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController),typeof(PlayerInput))]
 public class playerController : MonoBehaviour
 {
+    [Header("Physics")]
     [SerializeField]
     private float playerSpeed = 2.0f;
     [SerializeField]
     private float jumpHeight = 1.0f;
     [SerializeField]
     private float gravityValue = -9.81f;
-    
+
+    [Header("Objects and Transform")]
     public GameObject _bulateFreeFab;
     [SerializeField]
     private Transform _weponTranform;
@@ -29,9 +31,13 @@ public class playerController : MonoBehaviour
     private float jumpAnimationPlaytransition = 0.15f;
     [SerializeField]
     private float shootaniamationTransitionTime = 0.05f;
-   
-   
 
+    [Header("Audio")]
+    [SerializeField]private AudioClip _audioClipBlast;
+    [SerializeField]private AudioClip _audioClipDead;
+    [SerializeField]private AudioClip _audioClipChest;
+   
+    private AudioSource _audioSource;
     private PlayerInput _playerInput;
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -53,7 +59,7 @@ public class playerController : MonoBehaviour
     private Vector2 _curruntAnimationBlendVector;
     private Vector2 _animationVelocity;
 
-    //ui
+    [Header("Ui")]
     public Slider _helthbar;
     //[SerializeField] private TextMeshProUGUI _pointText;
    // private int _point=0;
@@ -80,9 +86,7 @@ public class playerController : MonoBehaviour
         // Hide the cursor
         Cursor.visible = false;
 
-        //UI
-       // _helthbar.value = 100;
-
+        _audioSource = GetComponent<AudioSource>();
     }
     private void OnEnable()
     {
@@ -98,6 +102,8 @@ public class playerController : MonoBehaviour
         RaycastHit hit;
         GameObject bullate = Instantiate(_bulateFreeFab, transform.position, Quaternion.identity, _perantTransform);
         bualteController bualteController = bullate.GetComponent<bualteController>();
+        _audioSource.clip = _audioClipBlast;
+        _audioSource.Play();
         if (Physics.Raycast(_cameraTranform.position,_cameraTranform.forward,out hit, Mathf.Infinity))
         {
             bualteController.target = hit.point;
@@ -141,7 +147,8 @@ public class playerController : MonoBehaviour
         if(_helthbar.value<=0)
         {
             _animator.SetBool("isDead", true);//dead animation
-            //Time.timeScale = 0f;
+            _audioSource.clip = _audioClipDead;
+            _audioSource.Play();
             Invoke("loadMainMenu",1f);
         }
 
@@ -213,10 +220,14 @@ public class playerController : MonoBehaviour
         else if (other.CompareTag("TutuleEnemy"))
         {
             _helthbar.value -= 10;
+            _audioSource.clip = _audioClipBlast;
+            _audioSource.Play();
         } 
         else if (other.CompareTag("Chest"))
         {
             _helthbar.value += 25;
+            _audioSource.clip = _audioClipChest;
+            _audioSource.Play();
         } 
     }
 }

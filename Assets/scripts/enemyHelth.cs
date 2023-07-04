@@ -7,11 +7,13 @@ using UnityEngine.UI;
 public class enemyHelth : MonoBehaviour
 {
     [SerializeField] private Slider _enemyhelthBar;
+    [SerializeField] private GameObject _winpanal;
    // [SerializeField] private GameObject _enemy;
      private Animator _animator;
 
     private void Start()
     {
+        _winpanal.SetActive(false);
         _animator = GetComponent<Animator>();
     }
     private void Update()
@@ -26,6 +28,7 @@ public class enemyHelth : MonoBehaviour
     private void enemydeadCounting()
     {
          Destroy(this.gameObject);
+        _winpanal.SetActive(true);
     }
     private void OnTriggerEnter(Collider other)
     {

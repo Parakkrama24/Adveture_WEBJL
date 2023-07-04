@@ -24,7 +24,7 @@ public class PointCntroller : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Chest"))
         {
-           _points=Random.Range(0, 10);
+           _points=Random.Range(1, 10);
             m_Text.text= "Coins : "+_points.ToString();
         }
     }

@@ -4,20 +4,25 @@ using UnityEngine.UI;
 
 public class slimeEnemy : MonoBehaviour
 {
+    [Header("game objects and trasform")]
     [SerializeField] private float _playerToDistance = 20;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private GameObject _explotionFX;
     [SerializeField] private Slider _playerSlider;
     [SerializeField] private float reduseValuve;
 
-    //ui
+    [Header("UI")]
     [SerializeField] private Slider _enemyhelthBar;
 
+    [Header("sounds")]
+    [SerializeField]private AudioClip _BlastSounds;
+    
     private bool hasexploded;
     private bool istriggerd=false;
     private SphereCollider _spearCollider;
     private NavMeshAgent _agent;
     private Animator _animator;
+    private AudioSource _audioSource;
 
 
     void Start()
@@ -28,6 +33,7 @@ public class slimeEnemy : MonoBehaviour
         _spearCollider.radius = 2.32f;
         _spearCollider.isTrigger = true;
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -74,6 +80,8 @@ public class slimeEnemy : MonoBehaviour
         Instantiate(_explotionFX, transform.position, transform.rotation);
         _playerSlider.value -= reduseValuve;
         hasexploded= true;
+       // _audioSource.clip = _BlastSounds;
+        _audioSource.Play();
         Destroy(this.gameObject);
     }
 }
