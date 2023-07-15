@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
-[RequireComponent(typeof(CharacterController),typeof(PlayerInput))]
+[RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class playerController : MonoBehaviour
 {
     [Header("Physics")]
@@ -23,6 +24,10 @@ public class playerController : MonoBehaviour
     private Transform _weponTranform;
     [SerializeField]
     private Transform _perantTransform;
+    [SerializeField]
+    private TextMeshProUGUI _playerText;
+    [SerializeField]
+    private GameObject _ChestUiImage;
 
     [Header("Aniamtion parameters")]
     [SerializeField]
@@ -66,13 +71,14 @@ public class playerController : MonoBehaviour
 
     private void Awake()
     {
+        _ChestUiImage.SetActive(false);
         controller = GetComponent<CharacterController>();
         _playerInput= GetComponent<PlayerInput>();
         _cameraTranform=Camera.main.transform;
        _moveAction =_playerInput.actions["Move"];
         _JumpAction = _playerInput.actions["Jump"];
         _atrackAction = _playerInput.actions["Shoot"];
-
+        _playerText.text = " ";
 
         _animator = GetComponent<Animator>();//getanimatore component to code
         _jumpAnimation = Animator.StringToHash("Jump");
@@ -223,11 +229,102 @@ public class playerController : MonoBehaviour
             _audioSource.clip = _audioClipBlast;
             _audioSource.Play();
         } 
-        else if (other.CompareTag("Chest"))
+        else if (other.CompareTag("Chest0"))
         {
-            _helthbar.value += 25;
+            _ChestUiImage.SetActive(true);
+            _helthbar.value = 100;
             _audioSource.clip = _audioClipChest;
             _audioSource.Play();
+            _playerText.text = "0000";
+            Invoke("textNull", 3f);
+        } else if (other.CompareTag("Chest1"))
+        {
+            _ChestUiImage.SetActive(true);
+            _helthbar.value = 100;
+            _audioSource.clip = _audioClipChest;
+            _audioSource.Play();
+            _playerText.text = "1111";
+            Invoke("textNull", 3f);
+        } else if (other.CompareTag("Chest2"))
+        {
+            _ChestUiImage.SetActive(true);
+            _helthbar.value = 100;
+            _audioSource.clip = _audioClipChest;
+            _audioSource.Play();
+            _playerText.text = "2222";
+            Invoke("textNull", 3f);
+        } else if (other.CompareTag("Chest3"))
+        {
+            _ChestUiImage.SetActive(true);
+            _helthbar.value = 100;
+            _audioSource.clip = _audioClipChest;
+            _audioSource.Play();
+            _playerText.text = "3333";
+            Invoke("textNull", 3f);
+        } else if (other.CompareTag("Chest4"))
+        {
+            _ChestUiImage.SetActive(true);
+            _helthbar.value = 100;
+            _audioSource.clip = _audioClipChest;
+            _audioSource.Play();
+            _playerText.text = "4444";
+            Invoke("textNull", 3f);
+        } else if (other.CompareTag("Chest5"))
+        {
+            _ChestUiImage.SetActive(true);
+            _helthbar.value = 100;
+            _audioSource.clip = _audioClipChest;
+            _audioSource.Play();
+            _playerText.text = "5555";
+            Invoke("textNull", 3f);
+        } else if (other.CompareTag("Chest6"))
+        {
+            _ChestUiImage.SetActive(true);
+            _helthbar.value = 100;
+            _audioSource.clip = _audioClipChest;
+            _audioSource.Play();
+            _playerText.text = "6666";
+            Invoke("textNull", 3f);
+        } else if (other.CompareTag("Chest7"))
+        {
+            _ChestUiImage.SetActive(true);
+            _helthbar.value = 100;
+            _audioSource.clip = _audioClipChest;
+            _audioSource.Play();
+            _playerText.text = "7777";
+            Invoke("textNull", 3f);
+        } else if (other.CompareTag("Chest8"))
+        {
+            _ChestUiImage.SetActive(true);
+            _helthbar.value = 100;
+            _audioSource.clip = _audioClipChest;
+            _audioSource.Play();
+            _playerText.text = "8888";
+            Invoke("textNull", 3f);
+        } else if (other.CompareTag("Chest9"))
+        {
+            _ChestUiImage.SetActive(true);
+            _helthbar.value = 100;
+            _audioSource.clip = _audioClipChest;
+            _audioSource.Play();
+            _playerText.text = "9999";
+            Invoke("textNull", 3f);
+        } else if (other.CompareTag("Chest10"))
+        {
+            _ChestUiImage.SetActive(true);
+            _helthbar.value = 100;
+            _audioSource.clip = _audioClipChest;
+            _audioSource.Play();
+            Invoke("textNull", 3f);
+            _playerText.text = "101010";
         } 
+
+       
+    }
+
+    private void textNull()
+    {
+        _ChestUiImage.SetActive(false);
+        _playerText.text = " ";
     }
 }

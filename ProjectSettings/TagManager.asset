@@ -10,6 +10,17 @@ TagManager:
   - Bulate
   - flame
   - Chest
+  - Chest0
+  - Chest1
+  - Chest2
+  - Chest3
+  - Chest4
+  - Chest5
+  - Chest6
+  - Chest7
+  - Chest8
+  - Chest9
+  - Chest10
   layers:
   - Default
   - TransparentFX
