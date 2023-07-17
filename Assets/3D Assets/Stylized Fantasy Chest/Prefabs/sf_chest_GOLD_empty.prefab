@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 3514365239502229905}
   m_Layer: 0
   m_Name: sf_chest_GOLD_empty
-  m_TagString: Untagged
+  m_TagString: Chest4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,7 +199,7 @@ Transform:
   - {fileID: 4024657913812709376}
   - {fileID: 4024657913853833938}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2906574869123244499
 MonoBehaviour:
@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chestOpenGameObj: {fileID: 2476306706555744521, guid: 33dcdfbc105b1a746932742af1eb3d20,
     type: 3}
+  _NUllobject: []
 --- !u!65 &3514365239502229905
 BoxCollider:
   m_ObjectHideFlags: 0

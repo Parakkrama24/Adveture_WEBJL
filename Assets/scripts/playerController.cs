@@ -127,12 +127,12 @@ public class playerController : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.LeftShift))
         {
-            playerSpeed = 5f;
+            playerSpeed = 8f;
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            playerSpeed = 3f;
+            playerSpeed = 5f;
         }
 
         if (Input.GetMouseButton(0))
@@ -231,12 +231,11 @@ public class playerController : MonoBehaviour
         } 
         else if (other.CompareTag("Chest0"))
         {
-            _ChestUiImage.SetActive(true);
             _helthbar.value = 100;
             _audioSource.clip = _audioClipChest;
             _audioSource.Play();
-            _playerText.text = "0000";
-            Invoke("textNull", 3f);
+            
+            //Invoke("textNull", 3f);
         } else if (other.CompareTag("Chest1"))
         {
             _ChestUiImage.SetActive(true);
@@ -317,9 +316,82 @@ public class playerController : MonoBehaviour
             _audioSource.Play();
             Invoke("textNull", 3f);
             _playerText.text = "101010";
-        } 
+        }
 
-       
+        if (other.CompareTag("0"))
+        {
+            _ChestUiImage.SetActive(true);
+            _playerText.text = "0000";
+            Invoke("textNull", 3f);
+        }
+        else if (other.CompareTag("1"))
+        {
+            _ChestUiImage.SetActive(true);
+            _playerText.text = "0000";
+            Invoke("textNull", 3f);
+        }
+        else if (other.CompareTag("2"))
+        {
+            _ChestUiImage.SetActive(true);
+            _playerText.text = "0000";
+            Invoke("textNull", 3f);
+        }
+        else if (other.CompareTag("3"))
+        {
+            _ChestUiImage.SetActive(true);
+            _playerText.text = "0000";
+            Invoke("textNull", 3f);
+        }
+        else if (other.CompareTag("4"))
+        {
+            _ChestUiImage.SetActive(true);
+            _playerText.text = "0000";
+            Invoke("textNull", 3f);
+        }
+        else if (other.CompareTag("5"))
+        {
+            _ChestUiImage.SetActive(true);
+            _playerText.text = "0000";
+            Invoke("textNull", 3f);
+        }
+        else if (other.CompareTag("6"))
+        {
+            _ChestUiImage.SetActive(true);
+            _playerText.text = "0000";
+            Invoke("textNull", 3f);
+        }
+        else if (other.CompareTag("7"))
+        {
+            _ChestUiImage.SetActive(true);
+            _playerText.text = "0000";
+            Invoke("textNull", 3f);
+        }
+        else if (other.CompareTag("8"))
+        {
+            _ChestUiImage.SetActive(true);
+            _playerText.text = "0000";
+            Invoke("textNull", 3f);
+        }
+        else if (other.CompareTag("9"))
+        {
+            _ChestUiImage.SetActive(true);
+            _playerText.text = "0000";
+            Invoke("textNull", 3f);
+        }
+        else if (other.CompareTag("10"))
+        {
+            _ChestUiImage.SetActive(true);
+            _playerText.text = "0000";
+            Invoke("textNull", 3f);
+        }
+        else if (other.CompareTag("11"))
+        {
+            _ChestUiImage.SetActive(true);
+            _playerText.text = "0000";
+            Invoke("textNull", 3f);
+        }
+
+
     }
 
     private void textNull()
