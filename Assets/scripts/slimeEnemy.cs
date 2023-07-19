@@ -50,7 +50,7 @@ public class slimeEnemy : MonoBehaviour
         {
             _agent.SetDestination(_playerTransform.position);
         
-            Debug.Log("Trigered");
+          //  Debug.Log("Trigered");
         }
         if (_enemyhelthBar.value <= 0)
         {

@@ -41,7 +41,12 @@ public class playerController : MonoBehaviour
     [SerializeField]private AudioClip _audioClipBlast;
     [SerializeField]private AudioClip _audioClipDead;
     [SerializeField]private AudioClip _audioClipChest;
-   
+
+    [Header("variables")]
+    [SerializeField] private float uiScrolCloseTime = 180f;
+    [SerializeField] private float helthmax = 200f;
+
+
     private AudioSource _audioSource;
     private PlayerInput _playerInput;
     private CharacterController controller;
@@ -66,11 +71,17 @@ public class playerController : MonoBehaviour
 
     [Header("Ui")]
     public Slider _helthbar;
+
+
+    [SerializeField] private Transform[] checkPoints;
+    private Vector3 newSpwanPotion=new Vector3(0,0,0);
+   // private savePointScript _savePoints;
     //[SerializeField] private TextMeshProUGUI _pointText;
    // private int _point=0;
 
     private void Awake()
     {
+       // transform.position = Vector3.zero;
         _ChestUiImage.SetActive(false);
         controller = GetComponent<CharacterController>();
         _playerInput= GetComponent<PlayerInput>();
@@ -93,6 +104,8 @@ public class playerController : MonoBehaviour
         Cursor.visible = false;
 
         _audioSource = GetComponent<AudioSource>();
+
+       // _savePoints =GetComponent<savePointScript>();
     }
     private void OnEnable()
     {
@@ -152,10 +165,11 @@ public class playerController : MonoBehaviour
 
         if(_helthbar.value<=0)
         {
-            _animator.SetBool("isDead", true);//dead animation
+            //_animator.SetBool("isDead", true);//dead animation
             _audioSource.clip = _audioClipDead;
             _audioSource.Play();
-            Invoke("loadMainMenu",1f);
+          // transform.position=Vector3.zero;
+            loadMainMenu();
         }
 
 
@@ -194,7 +208,14 @@ public class playerController : MonoBehaviour
 
     private  void loadMainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // transform.position = _savePoints.newSpwanPotion;
+        // _helthbar.value = 100f;
+      //  _helthbar.value = 200f;
+     //   transform.position = newSpwanPotion;
+
+        Debug.Log(newSpwanPotion);
+        //SceneManager.LoadScene(0);
     }
 
     private void ToggleCursorLock()
@@ -219,6 +240,14 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        for (int i = 0; i < checkPoints.Length; i++)
+        {
+            if (other.CompareTag("CheckPoint" + i.ToString()))
+            {
+              //  newSpwanPotion = other.transform.position;
+                Debug.Log(newSpwanPotion);
+            }
+        }
         if (other.CompareTag("enemyHand"))
         {
             _helthbar.value -= 10;
@@ -231,90 +260,90 @@ public class playerController : MonoBehaviour
         } 
         else if (other.CompareTag("Chest0"))
         {
-            _helthbar.value = 100;
+            _helthbar.value = helthmax;
             _audioSource.clip = _audioClipChest;
             _audioSource.Play();
             
             //Invoke("textNull", 3f);
         } else if (other.CompareTag("Chest1"))
         {
-            _ChestUiImage.SetActive(true);
-            _helthbar.value = 100;
+           // _ChestUiImage.SetActive(true);
+            _helthbar.value = helthmax;
             _audioSource.clip = _audioClipChest;
             _audioSource.Play();
             _playerText.text = "1111";
-            Invoke("textNull", 3f);
+          //  Invoke("textNull", 3f);
         } else if (other.CompareTag("Chest2"))
         {
-            _ChestUiImage.SetActive(true);
-            _helthbar.value = 100;
+            //_ChestUiImage.SetActive(true);
+            _helthbar.value = helthmax;
             _audioSource.clip = _audioClipChest;
             _audioSource.Play();
             _playerText.text = "2222";
-            Invoke("textNull", 3f);
+            //Invoke("textNull", 3f);
         } else if (other.CompareTag("Chest3"))
         {
-            _ChestUiImage.SetActive(true);
-            _helthbar.value = 100;
+           // _ChestUiImage.SetActive(true);
+            _helthbar.value = helthmax;
             _audioSource.clip = _audioClipChest;
             _audioSource.Play();
             _playerText.text = "3333";
-            Invoke("textNull", 3f);
+           // Invoke("textNull", 3f);
         } else if (other.CompareTag("Chest4"))
         {
-            _ChestUiImage.SetActive(true);
-            _helthbar.value = 100;
+          //  _ChestUiImage.SetActive(true);
+            _helthbar.value = helthmax;
             _audioSource.clip = _audioClipChest;
             _audioSource.Play();
             _playerText.text = "4444";
-            Invoke("textNull", 3f);
+           // Invoke("textNull", 3f);
         } else if (other.CompareTag("Chest5"))
         {
-            _ChestUiImage.SetActive(true);
-            _helthbar.value = 100;
+           // _ChestUiImage.SetActive(true);
+            _helthbar.value = helthmax;
             _audioSource.clip = _audioClipChest;
             _audioSource.Play();
             _playerText.text = "5555";
-            Invoke("textNull", 3f);
+            //Invoke("textNull", 3f);
         } else if (other.CompareTag("Chest6"))
         {
-            _ChestUiImage.SetActive(true);
-            _helthbar.value = 100;
+          //  _ChestUiImage.SetActive(true);
+            _helthbar.value = helthmax;
             _audioSource.clip = _audioClipChest;
             _audioSource.Play();
             _playerText.text = "6666";
-            Invoke("textNull", 3f);
+            //Invoke("textNull", 3f);
         } else if (other.CompareTag("Chest7"))
         {
-            _ChestUiImage.SetActive(true);
-            _helthbar.value = 100;
+            //_ChestUiImage.SetActive(true);
+            _helthbar.value = helthmax;
             _audioSource.clip = _audioClipChest;
             _audioSource.Play();
             _playerText.text = "7777";
             Invoke("textNull", 3f);
         } else if (other.CompareTag("Chest8"))
         {
-            _ChestUiImage.SetActive(true);
-            _helthbar.value = 100;
+          //  _ChestUiImage.SetActive(true);
+            _helthbar.value = helthmax;
             _audioSource.clip = _audioClipChest;
             _audioSource.Play();
             _playerText.text = "8888";
             Invoke("textNull", 3f);
         } else if (other.CompareTag("Chest9"))
         {
-            _ChestUiImage.SetActive(true);
-            _helthbar.value = 100;
+           // _ChestUiImage.SetActive(true);
+            _helthbar.value = helthmax;
             _audioSource.clip = _audioClipChest;
             _audioSource.Play();
             _playerText.text = "9999";
-            Invoke("textNull", 3f);
+            //Invoke("textNull", 3f);
         } else if (other.CompareTag("Chest10"))
         {
-            _ChestUiImage.SetActive(true);
-            _helthbar.value = 100;
+           // _ChestUiImage.SetActive(true);
+            _helthbar.value = helthmax;
             _audioSource.clip = _audioClipChest;
             _audioSource.Play();
-            Invoke("textNull", 3f);
+           // Invoke("textNull", 3f);
             _playerText.text = "101010";
         }
 
@@ -322,73 +351,73 @@ public class playerController : MonoBehaviour
         {
             _ChestUiImage.SetActive(true);
             _playerText.text = "0000";
-            Invoke("textNull", 3f);
+            Invoke("textNull", uiScrolCloseTime);
         }
         else if (other.CompareTag("1"))
         {
             _ChestUiImage.SetActive(true);
             _playerText.text = "0000";
-            Invoke("textNull", 3f);
+            Invoke("textNull", uiScrolCloseTime);
         }
         else if (other.CompareTag("2"))
         {
             _ChestUiImage.SetActive(true);
             _playerText.text = "0000";
-            Invoke("textNull", 3f);
+            Invoke("textNull", uiScrolCloseTime);
         }
         else if (other.CompareTag("3"))
         {
             _ChestUiImage.SetActive(true);
             _playerText.text = "0000";
-            Invoke("textNull", 3f);
+            Invoke("textNull", uiScrolCloseTime);
         }
         else if (other.CompareTag("4"))
         {
             _ChestUiImage.SetActive(true);
             _playerText.text = "0000";
-            Invoke("textNull", 3f);
+            Invoke("textNull", uiScrolCloseTime);
         }
         else if (other.CompareTag("5"))
         {
             _ChestUiImage.SetActive(true);
             _playerText.text = "0000";
-            Invoke("textNull", 3f);
+            Invoke("textNull", uiScrolCloseTime);
         }
         else if (other.CompareTag("6"))
         {
             _ChestUiImage.SetActive(true);
             _playerText.text = "0000";
-            Invoke("textNull", 3f);
+            Invoke("textNull", uiScrolCloseTime);
         }
         else if (other.CompareTag("7"))
         {
             _ChestUiImage.SetActive(true);
             _playerText.text = "0000";
-            Invoke("textNull", 3f);
+            Invoke("textNull", uiScrolCloseTime);
         }
         else if (other.CompareTag("8"))
         {
             _ChestUiImage.SetActive(true);
             _playerText.text = "0000";
-            Invoke("textNull", 3f);
+            Invoke("textNull", uiScrolCloseTime);
         }
         else if (other.CompareTag("9"))
         {
             _ChestUiImage.SetActive(true);
             _playerText.text = "0000";
-            Invoke("textNull", 3f);
+            Invoke("textNull", uiScrolCloseTime);
         }
         else if (other.CompareTag("10"))
         {
             _ChestUiImage.SetActive(true);
-            _playerText.text = "0000";
-            Invoke("textNull", 3f);
+            _playerText.text = "00gfghb00";
+            Invoke("textNull", uiScrolCloseTime);
         }
         else if (other.CompareTag("11"))
         {
             _ChestUiImage.SetActive(true);
-            _playerText.text = "0000";
-            Invoke("textNull", 3f);
+            _playerText.text = "fs";
+            Invoke("textNull", uiScrolCloseTime);
         }
 
 
