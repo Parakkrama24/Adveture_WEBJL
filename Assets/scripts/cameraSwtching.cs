@@ -34,12 +34,12 @@ public class cameraSwtching : MonoBehaviour
     private void startAim()
     {
         _virtualCamera.Priority += prorityBoostValuve;
-        _zoomCanvas.enabled=true;
+       _zoomCanvas.enabled=true;
     }
     private void cancalAim()
     {
         _virtualCamera.Priority -= prorityBoostValuve;
-        _zoomCanvas.enabled=false;
+       _zoomCanvas.enabled=false;
     }
 
 

@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
            // itarateWayPoitIndex();
            // updateDestination();
         }
-
+        if(_playerTransform != null) 
         if (Vector3.Distance(transform.position, _playerTransform.position) <= _playerToDistance)
         {
             if (Vector3.Distance(transform.position, _playerTransform.position) <= 5)

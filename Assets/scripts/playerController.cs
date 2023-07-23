@@ -28,6 +28,8 @@ public class playerController : MonoBehaviour
     private TextMeshProUGUI _playerText;
     [SerializeField]
     private GameObject _ChestUiImage;
+    
+    //private GameObject SavePotionPanel;
 
     [Header("Aniamtion parameters")]
     [SerializeField]
@@ -65,23 +67,27 @@ public class playerController : MonoBehaviour
     int _attractAnimation;
     int  moveXAnimatoreId;
     int moveZAnimatoreId;
+    
 
     private Vector2 _curruntAnimationBlendVector;
     private Vector2 _animationVelocity;
 
     [Header("Ui")]
     public Slider _helthbar;
+    public int CheckPontCount = 0;
 
 
     [SerializeField] private Transform[] checkPoints;
+
+ 
     private Vector3 newSpwanPotion=new Vector3(0,0,0);
-   // private savePointScript _savePoints;
-    //[SerializeField] private TextMeshProUGUI _pointText;
-   // private int _point=0;
+
+    [Header("Scripts")]
+    [SerializeField] private savePointScript SavePointsSc;
 
     private void Awake()
     {
-       // transform.position = Vector3.zero;
+       
         _ChestUiImage.SetActive(false);
         controller = GetComponent<CharacterController>();
         _playerInput= GetComponent<PlayerInput>();
@@ -105,7 +111,7 @@ public class playerController : MonoBehaviour
 
         _audioSource = GetComponent<AudioSource>();
 
-       // _savePoints =GetComponent<savePointScript>();
+       
     }
     private void OnEnable()
     {
@@ -168,7 +174,7 @@ public class playerController : MonoBehaviour
             //_animator.SetBool("isDead", true);//dead animation
             _audioSource.clip = _audioClipDead;
             _audioSource.Play();
-          // transform.position=Vector3.zero;
+            // transform.position=Vector3.zero;
             loadMainMenu();
         }
 
@@ -204,18 +210,16 @@ public class playerController : MonoBehaviour
         float targetAngle =_cameraTranform.rotation.eulerAngles.y;
         Quaternion target_rotation= Quaternion.Euler(0,targetAngle, 0);
         transform.rotation= Quaternion.Lerp(transform.rotation, target_rotation,_rotationSpeed*Time.deltaTime);
-    }
+
+       
+
+    }//update
 
     private  void loadMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        // transform.position = _savePoints.newSpwanPotion;
-        // _helthbar.value = 100f;
-      //  _helthbar.value = 200f;
-     //   transform.position = newSpwanPotion;
-
-        Debug.Log(newSpwanPotion);
-        //SceneManager.LoadScene(0);
+        
+       SceneManager.LoadScene(0);
+      
     }
 
     private void ToggleCursorLock()
@@ -244,14 +248,20 @@ public class playerController : MonoBehaviour
         {
             if (other.CompareTag("CheckPoint" + i.ToString()))
             {
-              //  newSpwanPotion = other.transform.position;
-                Debug.Log(newSpwanPotion);
+                CheckPontCount++;
+                Debug.Log("ckeck01");
+                Debug.Log(CheckPontCount);
+
             }
         }
         if (other.CompareTag("enemyHand"))
         {
             _helthbar.value -= 10;
+        }        if (other.CompareTag("enemyBulate"))
+        {
+            _helthbar.value -= 5;
         }
+
         else if (other.CompareTag("TutuleEnemy"))
         {
             _helthbar.value -= 10;
@@ -427,5 +437,31 @@ public class playerController : MonoBehaviour
     {
         _ChestUiImage.SetActive(false);
         _playerText.text = " ";
+    }
+
+
+    public void save()
+    {
+        float plyerPotionx=transform.position.x;
+        float playerPotiony=transform.position.y;
+        float playerPoisonz=transform.position.z;
+
+        PlayerPrefs.SetFloat("plyerPotionx", plyerPotionx);
+        PlayerPrefs.SetFloat("plyerPotiony", playerPotiony);
+        PlayerPrefs.SetFloat("plyerPotionz", playerPoisonz);
+        Debug.Log("Save");
+        PlayerPrefs.Save();
+    }
+
+    private void load()
+    {
+        float plyerPotionx = PlayerPrefs.GetFloat("plyerPotionx");
+        float playerPotiony = PlayerPrefs.GetFloat("plyerPotiony");
+        float playerPoisonz = PlayerPrefs.GetFloat("plyerPotionx");
+
+        Vector3 playerPos=new Vector3(plyerPotionx, playerPotiony, playerPoisonz);
+        transform.position = playerPos;
+        Debug.Log("Load");
+        Debug.Log(playerPos);
     }
 }

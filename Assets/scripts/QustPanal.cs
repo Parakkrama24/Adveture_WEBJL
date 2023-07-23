@@ -14,11 +14,6 @@ public class QustPanal : MonoBehaviour
    
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            isQpress = !isQpress;
-            Qustpanel.SetActive(isQpress);
-           
-        }
+       
     }
 }

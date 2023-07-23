@@ -180,7 +180,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154534052495846812}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 055a51d880acfe64d95db4a89e853f97, type: 3}
   m_Name: 
@@ -204,13 +204,27 @@ MonoBehaviour:
   _bulateFreeFab: {fileID: 7925504883629216800, guid: 7876f3a91ba5b1d4e8ce5b4c166b4455,
     type: 3}
   _weponTranform: {fileID: 3521285847989067254}
-  _perantTransform: {fileID: 0}
+  _perantTransform: {fileID: 3450750595060440717, guid: 7d9826f8a970db4419f3761c6b73c42c,
+    type: 3}
+  _playerText: {fileID: 6417591079500081705, guid: 5cb22cc4a3b59414e9d53134eba1bcb2,
+    type: 3}
+  _ChestUiImage: {fileID: 7323651080823400275, guid: 7e69c87a334c0374081ebd68ed3bd66e,
+    type: 3}
   _animationAmoothTime: 0.2
   jumpAnimationPlaytransition: 0.15
   shootaniamationTransitionTime: 0.05
   _audioClipBlast: {fileID: 8300000, guid: b3d04a86be0749e418c39c797db5517e, type: 3}
   _audioClipDead: {fileID: 8300000, guid: df729d213c4be44a9b55cd109f5cd4f9, type: 3}
-  _helthbar: {fileID: 0}
+  _audioClipChest: {fileID: 0}
+  uiScrolCloseTime: 180
+  helthmax: 200
+  _helthbar: {fileID: 6767718837806215171, guid: 6d1a2b3775a7e6948ba4cfcd0eea778b,
+    type: 3}
+  CheckPontCount: 0
+  checkPoints:
+  - {fileID: 1220310230128381440, guid: fe75e86adf41dc8409331efebbe210b6, type: 3}
+  SavePointsSc: {fileID: 3055986422394786193, guid: f1ae21d7739fd3144ab2051312a65998,
+    type: 3}
 --- !u!114 &2697375287034606072
 MonoBehaviour:
   m_ObjectHideFlags: 0

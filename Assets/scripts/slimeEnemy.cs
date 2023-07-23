@@ -38,7 +38,7 @@ public class slimeEnemy : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {if(_playerTransform != null) 
         if (Vector3.Distance(transform.position, _playerTransform.position) <= _playerToDistance)
         {
             istriggerd = true;
