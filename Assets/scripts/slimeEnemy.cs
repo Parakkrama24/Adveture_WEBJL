@@ -54,7 +54,7 @@ public class slimeEnemy : MonoBehaviour
         }
         if (_enemyhelthBar.value <= 0)
         {
-            Invoke("enemydead", 1.5f);
+            Invoke("enemydead", 1f);
             _animator.SetBool("EnemyDead", true);
 
         }

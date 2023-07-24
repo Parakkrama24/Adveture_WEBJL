@@ -3,14 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUiNEW : MonoBehaviour
 {
-    public void Play()
+    
+
+    private void Update()
     {
-        SceneManager.LoadScene(1);
-        Time.timeScale = 1f;    
+        if(Input.GetKeyDown(KeyCode.KeypadEnter)) 
+         SceneManager.LoadScene(1);
     }
-    public void OnApplicationQuit()
+    public void MainMenu()
     {
-        Debug.Log("Quit");
-      Application.Quit();
+        SceneManager.LoadScene(0);
+        
     }
+   
 }

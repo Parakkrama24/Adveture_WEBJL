@@ -36,6 +36,7 @@ TagManager:
   - 11
   - CheckPoint0
   - enemyBulate
+  - ChestEnemy
   layers:
   - Default
   - TransparentFX

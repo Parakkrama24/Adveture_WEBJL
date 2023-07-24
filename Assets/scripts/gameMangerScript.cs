@@ -27,6 +27,11 @@ public class gameMangerScript : MonoBehaviour
                 PauseGame();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Mainmenu();
+        }
     }
 
     void PauseGame()
@@ -35,7 +40,7 @@ public class gameMangerScript : MonoBehaviour
         isPaused = true;
 
         // Pause the game by setting the time scale to 0
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         Pausepanel.SetActive (true);
         // Additional pause logic (e.g., show pause menu, disable player control)
         // ...
@@ -47,7 +52,7 @@ public class gameMangerScript : MonoBehaviour
         isPaused = false;
 
         // Resume the game by setting the time scale back to 1
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         Pausepanel.SetActive(false );
         // Additional resume logic (e.g., hide pause menu, enable player control)
         // ...

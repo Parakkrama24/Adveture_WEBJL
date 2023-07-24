@@ -224,7 +224,7 @@ public class playerController : MonoBehaviour
 
     private void ToggleCursorLock()
     {
-        if (Cursor.lockState == CursorLockMode.Locked)
+       /* if (Cursor.lockState == CursorLockMode.Locked)
         {
             // Unlock the cursor
             Cursor.lockState = CursorLockMode.None;
@@ -239,7 +239,7 @@ public class playerController : MonoBehaviour
             // Hide the cursor
             Cursor.visible = false;
             Time.timeScale = 1f;
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)
@@ -254,10 +254,17 @@ public class playerController : MonoBehaviour
 
             }
         }
+
+        if (other.CompareTag("ChestEnemy"))
+       {
+            _helthbar.value -= 10;
+        }
+        
         if (other.CompareTag("enemyHand"))
         {
             _helthbar.value -= 10;
-        }        if (other.CompareTag("enemyBulate"))
+        }        
+        if (other.CompareTag("enemyBulate"))
         {
             _helthbar.value -= 5;
         }
@@ -268,7 +275,7 @@ public class playerController : MonoBehaviour
             _audioSource.clip = _audioClipBlast;
             _audioSource.Play();
         } 
-        else if (other.CompareTag("Chest0"))
+        if (other.CompareTag("Chest0"))
         {
             _helthbar.value = helthmax;
             _audioSource.clip = _audioClipChest;
@@ -440,7 +447,7 @@ public class playerController : MonoBehaviour
     }
 
 
-    public void save()
+    /*/public void save()
     {
         float plyerPotionx=transform.position.x;
         float playerPotiony=transform.position.y;
@@ -451,9 +458,9 @@ public class playerController : MonoBehaviour
         PlayerPrefs.SetFloat("plyerPotionz", playerPoisonz);
         Debug.Log("Save");
         PlayerPrefs.Save();
-    }
+    }*/
 
-    private void load()
+    /*private void load()
     {
         float plyerPotionx = PlayerPrefs.GetFloat("plyerPotionx");
         float playerPotiony = PlayerPrefs.GetFloat("plyerPotiony");
@@ -463,5 +470,5 @@ public class playerController : MonoBehaviour
         transform.position = playerPos;
         Debug.Log("Load");
         Debug.Log(playerPos);
-    }
+    }*/
 }
